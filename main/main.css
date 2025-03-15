@@ -1,0 +1,111 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+
+    background: linear-gradient(180deg, #363342 0%, #282932 46.88%, #1C1B20 100%);
+}
+
+h1 {
+    text-align: center;
+    margin-top: 60px;
+    color: #ffffff;
+    
+}
+
+
+button {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #312f37;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+    border: white solid 2px;
+}
+
+button:hover {
+    background-color: white;
+    color: #1C1B20;
+}
+
+.card{
+
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    border-radius: 15px;
+    background: linear-gradient(135deg, #4A4A6A, #2A2B3D);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    margin: auto;
+    margin: 70px 50px 70px 50px;
+    justify-content: space-evenly;
+
+}
+.settings{
+    display: flex;
+    
+}
+.settings_small{
+    
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    padding: 14px;
+    justify-content: center;
+}
+.boxInfo{
+    width: 30%;
+    padding: 15px;
+    color: white;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    height: 100%;
+}
+.boxInfo2{
+    width: 30%;
+    padding: 15px;
+    color: white;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    height: 100%;
+}
+
+input {
+    width: 90%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 8px;
+    border: none;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    font-size: 16px;
+    outline: none;
+    text-align: center;
+}
+
+input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.account{
+    background-image: url("../img/images.png");
+    background-size: contain;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border-radius: 50%;
+}

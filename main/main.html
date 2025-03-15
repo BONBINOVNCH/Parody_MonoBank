@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="../style.css">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div class="wrap">
+<h1>Картки</h1>
+    
+    <div class="card" id="card1">
+        <div class="boxInfo">
+        <h2>Info about card</h2>
+        <!-- <h3>Card number: <span class="cardNumber"></span></h3>
+        <h3>Card balance: <span class="cardBalance"></span></h3>
+        <h3>Card transaction limit: <span class="cardTransactionLimit"></span></h3>
+        <h3>Card history logs: <span class="cardHistoryLogs"></span></h3> -->
+    </div>
+ 
+    <div class="settings">
+        <div class="settings_small">
+            <div class="depositeBox">
+                <input type="number" id="depositeInp" placeholder="100">
+                <button id="depositeBtn">Deposite</button>
+            </div>
+            <div class="withdrawBox">
+                <input type="number" id="withdrawInp" placeholder="100">
+                <button id="withdrawBtn">withdraw</button>
+            </div>
+        </div>
+
+    
+        <div class="settings_small">
+    <div class="transferBox">    
+        <input type="number" id="transferInp" placeholder="100">
+        <input type="number" id="transferCardInp" placeholder="Card number">
+        <button id="transferBtn">Transfer</button>
+    </div>
+    <div class="setTransactionLimit">
+        <input type="number" id="setTransactionLimitInp" placeholder="100">
+        <button id="setTransactionLimitBtn">Set transaction limit</button>
+    </div>
+    </div>
+    </div>
+    </div>
+    <div class="card" id="card2">
+        <div class="boxInfo2">
+        <h2>Info about card</h2>
+        <!-- <h3>Card number: <span class="cardNumber"></span></h3>
+        <h3>Card balance: <span class="cardBalance"></span></h3>
+        <h3>Card transaction limit: <span class="cardTransactionLimit"></span></h3>
+        <h3>Card history logs: <span class="cardHistoryLogs"></span></h3> -->
+    </div>
+    <div class="settings">
+        <div class="settings">
+            <div class="settings_small">
+                <div class="depositeBox">
+                    <input type="number" id="depositeInp" placeholder="100">
+                    <button id="depositeBtn">Deposite</button>
+                </div>
+                <div class="withdrawBox">
+                    <input type="number" id="withdrawInp" placeholder="100">
+                    <button id="withdrawBtn">withdraw</button>
+                </div>
+            </div>
+    
+        
+            <div class="settings_small">
+        <div class="transferBox">    
+            <input type="number" id="transferInp" placeholder="100">
+            <input type="number" id="transferCardInp" placeholder="Card number">
+            <button id="transferBtn">Transfer</button>
+        </div>
+        <div class="setTransactionLimit">
+            <input type="number" id="setTransactionLimitInp" placeholder="100">
+            <button id="setTransactionLimitBtn">Set transaction limit</button>
+        </div>
+        </div>
+        </div>
+    </div>
+</div>  
+<a href="../account/account.html" class="account"></a>  
+    </div>
+    <script src="./script.js"></script>
+</body>
+</html>
