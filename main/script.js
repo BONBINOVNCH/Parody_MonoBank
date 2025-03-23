@@ -1,8 +1,8 @@
-function UserCard(index){
+function UserCard(index, saveData = null){
  
-    this._balance = 100;
-    this._transactionLimit = 100;
-    this._historyLogs = [];
+    this._balance = saveData ? saveData.balance : 100;
+    this._transactionLimit = saveData ? saveData.transactionLimit : 100;
+    this._historyLogs = saveData ? saveData.balance : [];
     this._key = index;
  
     let logOperation = (operationType, credits) => {
@@ -77,12 +77,14 @@ class UserAccount {
         this._email = email;
         this._cards = [];
     }
-    addCard(){
+    addCard(savedCardData = null){
         if(this._cards.length >= 3){
             return console.warn("User can't have more than 3 cards");
         } else{
-            const card = new UserCard(this._cards.length + 1)
+            const cardIndex = this._cards.length + 1
+            const card = new UserCard(cardIndex, savedCardData)
             this._cards.push(card);
+            saveCardToLocalStorage()
             return card;
         }
  
@@ -103,9 +105,21 @@ class UserAccount {
         return console.error("Card with such key doesn't exist");
     }
  
- 
+    getCards() {
+        return this._cards
+    }
+        
 }
  
+function saveCardToLocalStorage(card) {
+    const cardsDate = user.getCards().map(card => card.getCardOptions())
+    localStorage.setItem("cardsData", JSON.stringify(cardsDate))
+}
+
+function getCardsFromLocalStorage(){
+    const cardsDate = JSON.parse(localStorage.getItem("cardsDate"))
+    return cardsDate
+}
 // MAIN PAGE
  
 const transferInp = document.querySelector("#transferInp");
@@ -131,10 +145,24 @@ const withdrawBtn2 = document.querySelector("#card2 #withdrawBtn");
 const withdrawInp2 = document.querySelector("#card2 #withdrawInp");
 const setTransactionLimitBtn2 = document.querySelector("#card2 #setTransactionLimitBtn")
 const setTransactionLimitInp2 = document.querySelector("#card2 #setTransactionLimitInp")
+
+const historyLogs = document.querySelector(".historyLogs")
  
 const userDB = JSON.parse(localStorage.getItem("user"));
  
 const user = new UserAccount(userDB.name, userDB.email);
+const savedCardsDate = getCardsFromLocalStorage();
+
+if(savedCardsDate && savedCardsDate.length > 0) {
+    for (let cardDate of savedCardsDate) {
+        user.addCard(cardDate)
+    }
+
+} else {
+    user.addCard()
+    user.addCard()
+    saveCardToLocalStorage()
+}
  
 user.addCard();
 user.addCard();
@@ -170,6 +198,10 @@ depositeBtn.addEventListener("click", () => {
         card1.putCredits(+depositeInp.value);
       refreshInfoBox(card1, boxInfo)
     }
+
+    console.log(card1.getCardOptions())
+    historyBoxRender(card1)
+
    })
 
 withdrawBtn.addEventListener("click", () => {
@@ -181,6 +213,9 @@ withdrawBtn.addEventListener("click", () => {
         card1.takeCredits(+withdrawInp.value);
     refreshInfoBox(card1, boxInfo)
     }
+
+    console.log(card1.getCardOptions())
+    historyBoxRender(card1)
     
 })
 
@@ -199,6 +234,7 @@ depositeBtn2.addEventListener("click", () => {
        card2.putCredits(+depositeInp2.value);
      refreshInfoBox(card2, boxInfo2)
    }
+   historyBoxRender(card2)
   })
 
 withdrawBtn2.addEventListener("click", () => {
@@ -210,7 +246,7 @@ withdrawBtn2.addEventListener("click", () => {
        card2.takeCredits(+withdrawInp2.value);
    refreshInfoBox(card2, boxInfo2)
    }
-   
+   historyBoxRender(card2)
 })
 
 setTransactionLimitBtn2.addEventListener("click", () => {
@@ -246,3 +282,30 @@ transferBtn2.addEventListener("click", () => {
       refreshInfoBox(card2, boxInfo2)
    }
 })
+
+function historyBoxRender(card) {
+     historyLogs.innerHTML = ``
+
+    card.getCardOptions().historyLogs.forEach(transaction => {
+        console.log(transaction.operationType)
+
+        let color = "red"
+       
+        if (transaction.operationType == "Received credits") {
+            color = "green"
+        } 
+        
+        historyLogs.innerHTML += `
+        <li class="transaction">
+                <img src="../img/pngtree-green-arrow-png-image_4323663.png" alt="" class="imgLogoTransaction">
+                <div class="transactionInfo">
+                    <h5 class="transactionTitle">${transaction.operationType}</h5>
+                    <span class="transactionDate">${transaction.operationTime}</span>
+                </div>
+                <span style="color: ${color}" class="transactionAmount">${transaction.credits}</span>
+            </li>
+        `
+    })
+}
+
+historyBoxRender(card1)

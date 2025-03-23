@@ -109,3 +109,36 @@ input::placeholder {
     right: 10px;
     border-radius: 50%;
 }
+
+.imgLogoTransaction{
+    width: 40px;
+    height: 40px;
+    padding: 10px;
+    border-radius: 50%;
+    border: 3px solid white
+}
+
+.historyListBox{
+    width: 70%;
+    margin: auto;
+}
+
+.transaction{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-radius: 15px;
+    background: linear-gradient(135deg, #4A4A6A, #2A2B3D);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    margin: 10px 0 10px 0;
+    color: white;
+}
+.transactionAmount{
+    font-size: 20px;
+    font-weight: bold;
+    color: green;
+}
+.transactionTitle{
+    font-size: 12px;
+}
